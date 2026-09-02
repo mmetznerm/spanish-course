@@ -3,88 +3,54 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Espanhol — Mapas Mentais</title>
-  <meta name="description" content="Coleção de mapas mentais de espanhol para estudar no celular." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>Language Gym</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="hero">
-    <div class="hero__inner">
-      <p class="eyebrow">GitHub Pages • Mobile-first</p>
-      <h1>Espanhol — Mapas Mentais</h1>
-      <p class="hero__text">160 cartões individuais, organizados para estudar no celular sem precisar abrir PDF e ficar dando zoom toda hora.</p>
-      <div class="hero__stats" id="hero-stats">
-        <span>160 cartões</span>
-        <span>2 coleções</span>
-        <span>Busca instantânea</span>
-        <span>Favoritos no aparelho</span>
+  <main class="app">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">LANGUAGE GYM</div>
+        <h1>Frases para treinar inglês e espanhol.</h1>
       </div>
-    </div>
-  </header>
+      <div class="counter" id="counter">1 / 110</div>
+    </header>
 
-  <main class="page">
-    <section class="controls card-shell">
-      <label class="search">
-        <span>Pesquisar</span>
-        <input id="search-input" type="search" placeholder="Ex.: verbo ser, restaurante, aeroporto..." autocomplete="off" />
-      </label>
+    <section class="card" aria-live="polite">
+      <div class="topic" id="topic">Saudações</div>
 
-      <div class="toolbar-row">
-        <div>
-          <p class="toolbar-label">Categoria</p>
-          <div class="chip-row" id="category-chips"></div>
-        </div>
+      <div class="language-block pt">
+        <div class="label"><span>🇧🇷</span> Português</div>
+        <p id="pt">Olá! Como você está?</p>
       </div>
 
-      <div class="toolbar-row">
-        <div>
-          <p class="toolbar-label">Coleção</p>
-          <div class="chip-row" id="source-chips"></div>
-        </div>
+      <div class="divider"></div>
+
+      <div class="language-block en">
+        <div class="label"><span>🇺🇸</span> English</div>
+        <p id="en">Hi! How are you?</p>
       </div>
 
-      <div class="toolbar-row toolbar-row--between">
-        <div class="toggle-wrap">
-          <button id="favorite-filter" class="chip chip--ghost" type="button">☆ Mostrar só favoritos</button>
-        </div>
-        <div class="count" id="results-count">Carregando...</div>
+      <div class="divider"></div>
+
+      <div class="language-block es">
+        <div class="label"><span>🇪🇸</span> Español</div>
+        <p id="es">¡Hola! ¿Cómo estás?</p>
       </div>
     </section>
 
-    <section id="cards" class="grid"></section>
-    <p id="empty-state" class="empty hidden">Nada encontrado. Tente outra palavra ou limpe os filtros.</p>
+    <nav class="controls" aria-label="Navegação das frases">
+      <button class="secondary" id="prev" type="button">← Anterior</button>
+      <button class="primary" id="next" type="button">Próxima →</button>
+    </nav>
+
+    <footer>
+      <span id="source">Fonte: mapas1-p01-q2-saudacoes-em-espanhol.webp</span>
+      <span>Use ← → do teclado para navegar.</span>
+    </footer>
   </main>
-
-  <dialog id="viewer" class="viewer">
-    <div class="viewer__panel">
-      <div class="viewer__topbar">
-        <div>
-          <p id="viewer-meta" class="viewer__meta"></p>
-          <h2 id="viewer-title" class="viewer__title"></h2>
-        </div>
-        <div class="viewer__actions">
-          <button id="viewer-favorite" class="icon-btn" type="button" aria-label="Favoritar"></button>
-          <a id="viewer-open-original" class="icon-btn icon-btn--link" target="_blank" rel="noopener">↗</a>
-          <button id="viewer-close" class="icon-btn" type="button" aria-label="Fechar">✕</button>
-        </div>
-      </div>
-
-      <div class="viewer__content">
-        <button id="viewer-prev" class="nav-btn" type="button" aria-label="Anterior">‹</button>
-        <img id="viewer-image" alt="Mapa mental" />
-        <button id="viewer-next" class="nav-btn" type="button" aria-label="Próximo">›</button>
-      </div>
-
-      <div class="viewer__footer">
-        <p>Use os botões para navegar. No celular, você pode abrir a imagem original e ampliar com zoom à vontade.</p>
-      </div>
-    </div>
-  </dialog>
-
-  <script src="data.js"></script>
+  <script src="data/phrases.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

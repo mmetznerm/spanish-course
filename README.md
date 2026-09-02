@@ -1,57 +1,19 @@
-# Espanhol — Mapas Mentais
+# Language Gym
 
-Site estático, pronto para **GitHub Pages**, organizado para estudo no celular.
+Primeira versão de um site minimalista para treinar frases completas em português, inglês e espanhol.
 
-## O que tem
+## Conteúdo
 
-- **160 cartões individuais** extraídos dos dois PDFs
-- busca por palavras
-- filtros por categoria e coleção
-- favoritos salvos no próprio navegador (`localStorage`)
-- visualização ampliada de cada mapa
+O banco inicial contém 110 frases trilíngues inspiradas nos temas e exemplos dos mapas mentais do repositório `mmetznerm/spanish-course/assets/full`.
 
-## Estrutura
+O campo `source` registra o mapa de referência usado para cada frase. Algumas frases foram adaptadas para ficar naturais em português, inglês e espanhol; elas não devem ser tratadas como transcrição literal da imagem.
 
-```text
-index.html
-style.css
-app.js
-data.js
-assets/
-  full/
-  thumb/
-```
+## Rodar localmente
 
-## Como publicar no GitHub Pages
+Não há build, dependências ou backend.
 
-1. Crie um repositório no GitHub.
-2. Envie todos os arquivos desta pasta para a raiz do repositório.
-3. No GitHub, abra **Settings > Pages**.
-4. Em **Build and deployment**, escolha:
-   - **Source:** Deploy from a branch
-   - **Branch:** `main` (ou `master`)
-   - **Folder:** `/root`
-5. Salve.
-6. Aguarde alguns minutos. O site ficará disponível em algo como:
+Basta abrir `index.html` no navegador.
 
-```text
-https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/
-```
+## Publicar no GitHub Pages
 
-## Como testar localmente
-
-Você pode abrir o `index.html` direto no navegador, mas é melhor usar um servidor local simples:
-
-```bash
-python -m http.server 8000
-```
-
-Depois abra:
-
-```text
-http://localhost:8000
-```
-
-## Observação
-
-Os cartões foram cortados em 4 partes por página para melhorar a leitura no celular.
+Envie os arquivos do projeto para um repositório GitHub e habilite GitHub Pages usando a raiz da branch escolhida.
