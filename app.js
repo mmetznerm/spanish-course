@@ -21,7 +21,24 @@
     btnGtEs: document.getElementById('btn-gt-es'),
   };
 
+  const STORAGE_KEY = 'language_gym_current_index';
+
   let index = 0;
+  const savedIndex = localStorage.getItem(STORAGE_KEY);
+  if (savedIndex !== null) {
+    const parsed = parseInt(savedIndex, 10);
+    if (!isNaN(parsed) && parsed >= 0 && parsed < phrases.length) {
+      index = parsed;
+    }
+  }
+
+  function saveProgress() {
+    try {
+      localStorage.setItem(STORAGE_KEY, index.toString());
+    } catch (e) {
+      // Ignora falhas de localStorage se desabilitado
+    }
+  }
 
   function getGoogleTranslateUrl(text, sourceLang, targetLang = 'pt') {
     return `https://translate.google.com/?sl=${sourceLang}&tl=${targetLang}&text=${encodeURIComponent(text)}&op=translate`;
@@ -81,6 +98,7 @@
 
   function go(delta) {
     index = Math.min(Math.max(index + delta, 0), phrases.length - 1);
+    saveProgress();
     render();
   }
 
