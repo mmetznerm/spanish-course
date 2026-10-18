@@ -4,7 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0f172a" />
-  <title>Language Gym</title>
+  <meta name="description" content="Treine frases completas em português brasileiro, inglês e espanhol da Espanha. 610 frases com áudio de pronúncia." />
+  <title>Language Gym — Português, inglês e espanhol</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -13,94 +14,75 @@
       <div>
         <div class="eyebrow">LANGUAGE GYM</div>
         <h1>Frases para treinar inglês e espanhol.</h1>
+        <p class="subtitle">610 cartões trilíngues · Espanhol da Espanha · Áudio de pronúncia</p>
       </div>
-      <div class="counter" id="counter">1 / 110</div>
+      <div class="counter" id="counter" aria-live="polite">1 / 610</div>
     </header>
 
-    <section class="card" aria-live="polite">
-      <div class="topic" id="topic">Saudações</div>
+    <section class="card" aria-live="polite" aria-atomic="true">
+      <div class="topic" id="topic">01 · Conversação diária</div>
 
       <div class="language-block pt">
-        <div class="label"><span>🇧🇷</span> Português</div>
+        <div class="label"><span aria-hidden="true">🇧🇷</span> Português</div>
         <div class="phrase-row">
           <div class="phrase-actions">
             <button class="action-btn audio-btn" id="btn-audio-pt" type="button" title="Ouvir pronúncia" aria-label="Ouvir pronúncia em português">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-              </svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
             </button>
-            <a class="action-btn translate-btn" id="btn-gt-pt" href="#" target="_blank" rel="noopener noreferrer" title="Abrir no Google Tradutor" aria-label="Abrir no Google Tradutor">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M2 5h10M7 2v3M4 11a10 10 0 0 0 6 3M11 5a10.5 10.5 0 0 1-3.5 7"></path>
-                <path d="M13 22l5-10 5 10M14.5 18h7"></path>
-              </svg>
+            <a class="action-btn translate-btn" id="btn-gt-pt" href="#" target="_blank" rel="noopener noreferrer" title="Abrir no Google Tradutor" aria-label="Abrir português no Google Tradutor">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 5h10M7 2v3M4 11a10 10 0 0 0 6 3M11 5a10.5 10.5 0 0 1-3.5 7"></path><path d="M13 22l5-10 5 10M14.5 18h7"></path></svg>
             </a>
           </div>
-          <p id="pt">Olá! Como você está?</p>
+          <p id="pt">Pois, ainda não sei.</p>
         </div>
       </div>
 
       <div class="divider"></div>
 
       <div class="language-block en">
-        <div class="label"><span>🇺🇸</span> English</div>
+        <div class="label"><span aria-hidden="true">🇺🇸</span> English</div>
         <div class="phrase-row">
           <div class="phrase-actions">
             <button class="action-btn audio-btn" id="btn-audio-en" type="button" title="Ouvir pronúncia" aria-label="Ouvir pronúncia em inglês">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-              </svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
             </button>
-            <a class="action-btn translate-btn" id="btn-gt-en" href="#" target="_blank" rel="noopener noreferrer" title="Abrir no Google Tradutor" aria-label="Abrir no Google Tradutor">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M2 5h10M7 2v3M4 11a10 10 0 0 0 6 3M11 5a10.5 10.5 0 0 1-3.5 7"></path>
-                <path d="M13 22l5-10 5 10M14.5 18h7"></path>
-              </svg>
+            <a class="action-btn translate-btn" id="btn-gt-en" href="#" target="_blank" rel="noopener noreferrer" title="Abrir no Google Tradutor" aria-label="Abrir inglês no Google Tradutor">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 5h10M7 2v3M4 11a10 10 0 0 0 6 3M11 5a10.5 10.5 0 0 1-3.5 7"></path><path d="M13 22l5-10 5 10M14.5 18h7"></path></svg>
             </a>
           </div>
-          <p id="en">Hi! How are you?</p>
+          <p id="en">Well, I don't know yet.</p>
         </div>
       </div>
 
       <div class="divider"></div>
 
       <div class="language-block es">
-        <div class="label"><span>🇪🇸</span> Español</div>
+        <div class="label"><span aria-hidden="true">🇪🇸</span> Español de España</div>
         <div class="phrase-row">
           <div class="phrase-actions">
-            <button class="action-btn audio-btn" id="btn-audio-es" type="button" title="Ouvir pronúncia" aria-label="Ouvir pronúncia em espanhol">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-              </svg>
+            <button class="action-btn audio-btn" id="btn-audio-es" type="button" title="Ouvir pronúncia" aria-label="Ouvir pronúncia em espanhol da Espanha">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
             </button>
-            <a class="action-btn translate-btn" id="btn-gt-es" href="#" target="_blank" rel="noopener noreferrer" title="Abrir no Google Tradutor" aria-label="Abrir no Google Tradutor">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M2 5h10M7 2v3M4 11a10 10 0 0 0 6 3M11 5a10.5 10.5 0 0 1-3.5 7"></path>
-                <path d="M13 22l5-10 5 10M14.5 18h7"></path>
-              </svg>
+            <a class="action-btn translate-btn" id="btn-gt-es" href="#" target="_blank" rel="noopener noreferrer" title="Abrir no Google Tradutor" aria-label="Abrir espanhol no Google Tradutor">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 5h10M7 2v3M4 11a10 10 0 0 0 6 3M11 5a10.5 10.5 0 0 1-3.5 7"></path><path d="M13 22l5-10 5 10M14.5 18h7"></path></svg>
             </a>
           </div>
-          <p id="es">¡Hola! ¿Cómo estás?</p>
+          <p id="es">Pues, todavía no lo sé.</p>
         </div>
       </div>
     </section>
 
     <nav class="controls" aria-label="Navegação das frases">
-      <button class="secondary" id="prev" type="button">← Anterior</button>
+      <button class="secondary" id="prev" type="button" disabled>← Anterior</button>
       <button class="primary" id="next" type="button">Próxima →</button>
     </nav>
 
     <footer>
-      <span id="source">Fonte: mapas1-p01-q2-saudacoes-em-espanhol.webp</span>
-      <span>Use ← → do teclado para navegar.</span>
+      <span id="source">Bloco 01 · Conversação diária</span>
+      <span>Use as setas ← → do teclado para navegar.</span>
     </footer>
   </main>
+  <script src="data/survival-phrases.js"></script>
   <script src="data/phrases.js"></script>
   <script src="app.js"></script>
 </body>
