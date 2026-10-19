@@ -45,27 +45,102 @@
     return `https://translate.google.com/?sl=${sourceLang}&tl=${targetLang}&text=${encodeURIComponent(text)}&op=translate`;
   }
 
+  let cachedVoices = [];
+  let activeUtterance = null;
+
+  function loadVoices() {
+    if (!('speechSynthesis' in window)) return [];
+    const voices = window.speechSynthesis.getVoices();
+    if (voices && voices.length) cachedVoices = voices;
+    return cachedVoices;
+  }
+
+  if ('speechSynthesis' in window) {
+    loadVoices();
+    if (typeof window.speechSynthesis.addEventListener === 'function') {
+      window.speechSynthesis.addEventListener('voiceschanged', loadVoices);
+    } else {
+      window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+  }
+
+  function findBestVoice(targetLocale, langPrefix) {
+    const voices = loadVoices();
+    if (!voices.length) return null;
+    const normalizedTarget = targetLocale.toLowerCase();
+    const normalizedPrefix = langPrefix.toLowerCase();
+    const normalizeLang = l => String(l || '').replace('_', '-').toLowerCase();
+
+    return (
+      voices.find(v => normalizeLang(v.lang) === normalizedTarget && v.localService) ||
+      voices.find(v => normalizeLang(v.lang) === normalizedTarget) ||
+      voices.find(v => normalizeLang(v.lang).startsWith(normalizedPrefix + '-') && v.localService) ||
+      voices.find(v => normalizeLang(v.lang).startsWith(normalizedPrefix)) ||
+      null
+    );
+  }
+
+  function openGoogleTranslateFallback(text, lang) {
+    const sourceLang = lang === 'en' ? 'en' : (lang === 'es' ? 'es' : 'pt');
+    const targetLang = lang === 'pt' ? 'es' : 'pt';
+    window.open(getGoogleTranslateUrl(text, sourceLang, targetLang), '_blank', 'noopener,noreferrer');
+  }
+
   function speak(text, lang, buttonEl) {
-    if (!('speechSynthesis' in window)) {
-      const sourceLang = lang === 'en' ? 'en' : (lang === 'es' ? 'es' : 'pt');
-      const targetLang = lang === 'pt' ? 'es' : 'pt';
-      window.open(getGoogleTranslateUrl(text, sourceLang, targetLang), '_blank', 'noopener,noreferrer');
+    if (!('speechSynthesis' in window) || typeof window.SpeechSynthesisUtterance !== 'function') {
+      openGoogleTranslateFallback(text, lang);
       return;
     }
 
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = ({ en: 'en-US', es: 'es-ES', pt: 'pt-BR' })[lang] || 'pt-BR';
-    utterance.rate = 0.9;
-
+    const synth = window.speechSynthesis;
     const allAudioBtns = [els.btnAudioPt, els.btnAudioEn, els.btnAudioEs];
     allAudioBtns.forEach(btn => btn?.classList.remove('playing'));
+
+    try {
+      if (synth.speaking || synth.pending) {
+        synth.cancel();
+      }
+      if (synth.paused) {
+        synth.resume();
+      }
+    } catch (_) {
+      // Ignora falhas de estado em WebViews móveis.
+    }
+
+    const targetLocale = ({ en: 'en-US', es: 'es-ES', pt: 'pt-BR' })[lang] || 'pt-BR';
+    const utterance = new SpeechSynthesisUtterance(text);
+    activeUtterance = utterance;
+    utterance.lang = targetLocale;
+    utterance.rate = 0.9;
+
+    const matchedVoice = findBestVoice(targetLocale, lang);
+    if (matchedVoice) {
+      utterance.voice = matchedVoice;
+      utterance.lang = matchedVoice.lang || targetLocale;
+    }
+
     if (buttonEl) {
       buttonEl.classList.add('playing');
-      utterance.onend = () => buttonEl.classList.remove('playing');
-      utterance.onerror = () => buttonEl.classList.remove('playing');
     }
-    window.speechSynthesis.speak(utterance);
+
+    const clearPlaying = () => {
+      if (buttonEl) buttonEl.classList.remove('playing');
+      if (activeUtterance === utterance) activeUtterance = null;
+    };
+
+    utterance.onend = clearPlaying;
+    utterance.onerror = event => {
+      clearPlaying();
+      const err = event && event.error;
+      if (err && err !== 'canceled' && err !== 'interrupted') {
+        openGoogleTranslateFallback(text, lang);
+      }
+    };
+
+    synth.speak(utterance);
+    if (synth.paused) {
+      try { synth.resume(); } catch (_) { /* noop */ }
+    }
   }
 
   function render() {
@@ -81,7 +156,9 @@
     els.prev.style.opacity = els.prev.disabled ? '0.45' : '1';
     els.next.style.opacity = els.next.disabled ? '0.45' : '1';
 
-    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    if ('speechSynthesis' in window && (window.speechSynthesis.speaking || window.speechSynthesis.pending)) {
+      window.speechSynthesis.cancel();
+    }
     [els.btnAudioPt, els.btnAudioEn, els.btnAudioEs].forEach(btn => btn?.classList.remove('playing'));
     if (els.btnGtPt) els.btnGtPt.href = getGoogleTranslateUrl(item.pt, 'pt', 'es');
     if (els.btnGtEn) els.btnGtEn.href = getGoogleTranslateUrl(item.en, 'en', 'pt');
