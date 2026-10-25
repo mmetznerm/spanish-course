@@ -1,12 +1,13 @@
 # Language Gym — 610 frases para treinar idiomas
 
-Projeto estático para treinar frases completas em português brasileiro, inglês e espanhol da Espanha. Não precisa de instalação, build, dependências ou backend.
+Projeto estático para treinar frases completas em português brasileiro, inglês, espanhol da Espanha e alemão. Não precisa de instalação, build, dependências ou backend.
 
 ## O que vem nesta versão
 
-- 500 cartões novos em 10 blocos de 50 frases, com situações práticas para viver na Espanha.
-- As 110 frases trilíngues originais preservadas.
-- Áudio de pronúncia pelo recurso de síntese de voz do navegador (`es-ES`, `en-US` e `pt-BR`, conforme a disponibilidade do sistema).
+- 500 cartões novos em 10 blocos de 50 frases, com situações práticas para viver no dia a dia.
+- As 110 frases originais preservadas e ampliadas para 4 idiomas.
+- Cartões quadrilíngues completos: Português (🇧🇷), Inglês (🇺🇸), Espanhol (🇪🇸) e Alemão (🇩🇪).
+- Áudio de pronúncia pelo recurso de síntese de voz do navegador (`de-DE`, `es-ES`, `en-US` e `pt-BR`, conforme a disponibilidade do sistema).
 - Links para abrir a tradução no Google Tradutor.
 - Navegação pelos botões e pelas setas esquerda/direita do teclado.
 - Salvamento do cartão atual no navegador.
